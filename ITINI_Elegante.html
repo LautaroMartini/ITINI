@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITINI | Ramen Japonés & Café de Especialidad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #faf8f3;
+            --text-primary: #1a1a1a;
+            --text-secondary: #777777;
+            --accent: #d4745f;
+            --accent-light: #f0e6e3;
+            --border-color: #e8e3df;
+            --bg-secondary: #f5f2ed;
+            --gold: #c9a961;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            line-height: 1.3;
+        }
+
+        h4 {
+            font-size: 1.3rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: rgba(250, 248, 243, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(212, 116, 95, 0.2);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 116, 95, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 116, 95, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent-light);
+            border-color: var(--accent);
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .hero-content {
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-label {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-title {
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to left, transparent, rgba(250, 248, 243, 0.15));
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .hero-image {
+                height: 400px;
+            }
+            .hero-content {
+                padding: 2rem 1.5rem;
+            }
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            nav {
+                display: none;
+            }
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border-color), transparent);
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .icon-small {
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .menu-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .menu-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(212, 116, 95, 0.15);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .menu-item-price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .menu-item-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Full Menu Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-content {
+            background-color: var(--bg-primary);
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            max-width: 100%;
+            min-height: 100vh;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+
+        .modal-header h2 {
+            color: white;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .close-modal {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: transform 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 3rem;
+        }
+
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+
+        .menu-category-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 1rem;
+            position: relative;
+        }
+
+        .menu-category-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--gold));
+        }
+
+        .menu-category-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .full-menu-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+
+        .full-menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(212, 116, 95, 0.15);
+        }
+
+        .full-menu-item-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .full-menu-item-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .full-menu-item-price {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: var(--accent-light);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+        }
+
+        .menu-notes {
+            background: linear-gradient(135deg, var(--accent-light) 0%, rgba(201, 169, 97, 0.1) 100%);
+            border: 2px solid var(--accent);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 3rem;
+        }
+
+        .menu-notes h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .menu-notes p {
+            margin: 0.75rem 0;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                padding: 1.5rem;
+            }
+            .menu-category-items {
+                grid-template-columns: 1fr;
+            }
+            .modal-header {
+                padding: 2rem 1.5rem;
+            }
+            .modal-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Coffee Section */
+        .coffee-section {
+            background-color: var(--bg-secondary);
+        }
+
+        .coffee-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .coffee-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .coffee-item {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .coffee-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(201, 169, 97, 0.15);
+        }
+
+        .coffee-item-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .coffee-item-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .coffee-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-light) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(212, 116, 95, 0.15);
+        }
+
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        .testimonial-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Location Section */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-block {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .info-content h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .info-content p {
+            margin: 0;
+        }
+
+        .info-content a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .info-content a:hover {
+            color: var(--gold);
+        }
+
+        .discount-box {
+            background: linear-gradient(135deg, var(--accent-light) 0%, rgba(201, 169, 97, 0.1) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 1rem;
+        }
+
+        .discount-box p:first-child {
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .location-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .map-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            height: 500px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+            .map-container {
+                height: 400px;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta-primary {
+            background-color: white;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .btn-cta-primary:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-cta-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-cta-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            background-color: var(--bg-primary);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+        }
+
+        /* Utilities */
+        .transition-smooth {
+            transition: all 0.3s ease;
+        }
+
+        .max-w-md {
+            max-width: 500px;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">I</div>
+                    <span>ITINI</span>
+                </div>
+                <nav>
+                    <a href="#menu">Menú</a>
+                    <a href="#testimonios">Recomendaciones</a>
+                    <a href="#ubicacion">Ubicación</a>
+                </nav>
+                <a href="https://www.instagram.com/itini.ba" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Bienvenido a ITINI</p>
+            <h1 class="hero-title">Ramen<br>Artesanal<br>Japonés</h1>
+            <p class="hero-description">Experiencia auténtica de ramen, café de especialidad y matcha en el corazón de San Nicolás.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary btn-lg" onclick="openFullMenu()">Ver Menú Completo</button>
+                <button class="btn btn-outline btn-lg" onclick="document.getElementById('ubicacion').scrollIntoView({behavior: 'smooth'})">Ubicación</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663596040001/nPQ4eVcnePGxUd4QH8X5Q5/itini_hero_banner-hs9e5hDwNWryZE5FPy2mbx.webp" alt="Ramen ITINI">
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <div class="menu-grid">
+                <div class="menu-image">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663596040001/nPQ4eVcnePGxUd4QH8X5Q5/itini_ramen_hero-Vppx5S8sgo9MrVjEzUJvEh.webp" alt="Spicy Miso Ramen">
+                </div>
+                <div>
+                    <p class="section-label">
+                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8m3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5m-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11m3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/>
+                        </svg>
+                        Nuestro Menú
+                    </p>
+                    <h2>Ramen Tradicional</h2>
+                    <p class="mb-6">Cada cuenco es preparado con caldo artesanal chintan, fideos alcalinos frescos e ingredientes de estación cuidadosamente seleccionados.</p>
+                    
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Shoyu Ramen</span>
+                                <span class="menu-item-price">$24.000</span>
+                            </div>
+                            <p class="menu-item-description">Caldo shoyu, hongos, tofu, brotes de soja, vegetales de estación</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Miso Ramen</span>
+                                <span class="menu-item-price">$24.000</span>
+                            </div>
+                            <p class="menu-item-description">Caldo miso, tofu fresco y frito, choclo, vegetales de estación</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Spicy Ramen</span>
+                                <span class="menu-item-price">$24.000</span>
+                            </div>
+                            <p class="menu-item-description">Versión picante con salsa de ají casera, hongos, tofu</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Curry Ramen</span>
+                                <span class="menu-item-price">$27.000</span>
+                            </div>
+                            <p class="menu-item-description">Tare curry, hongos, zanahoria, papa, tofu, vegetales</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-lg transition-smooth" style="margin-top: 2rem;" onclick="openFullMenu()">Ver Menú Completo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Coffee Section -->
+    <section class="coffee-section">
+        <div class="container">
+            <div class="coffee-grid">
+                <div>
+                    <p class="section-label">
+                        <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                            <line x1="6" y1="1" x2="6" y2="3"></line>
+                            <line x1="10" y1="1" x2="10" y2="3"></line>
+                            <line x1="14" y1="1" x2="14" y2="3"></line>
+                        </svg>
+                        Specialty Coffee
+                    </p>
+                    <h2>Café & Matcha</h2>
+                    <p class="mb-6">Complementa tu experiencia con nuestro café de especialidad seleccionado y auténtico matcha japonés preparado con técnica tradicional.</p>
+                    
+                    <div class="coffee-items">
+                        <div class="coffee-item">
+                            <div class="coffee-item-name">Matcha Latte</div>
+                            <p class="coffee-item-description">Matcha premium con leche espumada</p>
+                        </div>
+                        <div class="coffee-item">
+                            <div class="coffee-item-name">Espresso Single Origin</div>
+                            <p class="coffee-item-description">Café de especialidad seleccionado</p>
+                        </div>
+                        <div class="coffee-item">
+                            <div class="coffee-item-name">Cold Sesame Ramen</div>
+                            <p class="coffee-item-description">Opción refrescante para días calurosos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-image">
+                    <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663596040001/nPQ4eVcnePGxUd4QH8X5Q5/itini_coffee_specialty-ZK8LsMhmLMRAN3myyJuyw9.webp" alt="Matcha Latte">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p class="section-label" style="justify-content: center;">
+                    <svg class="icon-small" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 21c3 0 7-1 7-8V5c0-1.25-4.716-5-7-5-6 0-8.812 3.114-8.996 6.032C-8.04 2.536-7.271 4.025-5 5c1.338-0.667 2.438-0.667 5-0.667V4c0 1.25 0 4 0 6 0 1-0.997 1-1 1s-1 0-1-1c0-1 0.573-4 5-4 3 0 5 1.25 5 4v6c0 1 0 7-5 7-4 0-8.5-4-8.5-4s-.5-2-1-4c-1-2-2-6-2-9s2-4 6-4 5 1.25 5 4v5c0 1 0 7-5 7z"/>
+                    </svg>
+                    Lo que dicen nuestros clientes
+                </p>
+                <h2>Recomendaciones</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"El mejor ramen que he probado en Buenos Aires. La calidad de los ingredientes es impecable y el ambiente es hermoso. Definitivamente vuelvo."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">M</div>
+                        <div class="testimonial-info">
+                            <h4>María González</h4>
+                            <p>Cliente verificado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"El matcha latte es delicioso y el servicio es excelente. El lugar es muy acogedor y la decoración tiene ese toque japonés que amo."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">J</div>
+                        <div class="testimonial-info">
+                            <h4>Juan Martínez</h4>
+                            <p>Cliente verificado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Increíble experiencia. El Curry Ramen es una obra maestra. Recomiendo este lugar a todos mis amigos. ¡Volveré pronto!"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">S</div>
+                        <div class="testimonial-info">
+                            <h4>Sofia Rodríguez</h4>
+                            <p>Cliente verificado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Ambiente tranquilo en medio de la ciudad. La comida es auténtica y deliciosa. Perfecto para una cita o para relajarse."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">C</div>
+                        <div class="testimonial-info">
+                            <h4>Carlos López</h4>
+                            <p>Cliente verificado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Las opciones veganas son excelentes. Me encanta que respeten las preferencias dietéticas. Muy recomendado."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">V</div>
+                        <div class="testimonial-info">
+                            <h4>Valentina Pérez</h4>
+                            <p>Cliente verificado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"El café es de excelente calidad. Cada detalle está pensado. ITINI es mi nuevo lugar favorito en San Nicolás."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Andrea Ruiz</h4>
+                            <p>Cliente verificado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Location Section -->
+    <section id="ubicacion">
+        <div class="container">
+            <div class="location-grid">
+                <div class="location-info">
+                    <div>
+                        <p class="section-label">
+                            <svg class="icon-small" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-4.198 0-8 3.239-8 7.234 0 4.868 8 16.766 8 16.766s8-11.898 8-16.766c0-3.995-3.802-7.234-8-7.234zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                            </svg>
+                            Ubicación
+                        </p>
+                        <h2>Visitanos</h2>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-4.198 0-8 3.239-8 7.234 0 4.868 8 16.766 8 16.766s8-11.898 8-16.766c0-3.995-3.802-7.234-8-7.234zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Dirección</h4>
+                            <p>Esmeralda 436<br>C1007 San Nicolás<br>Buenos Aires, Argentina</p>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Contacto</h4>
+                            <a href="https://www.instagram.com/itini.ba" target="_blank">@itini.ba en Instagram</a><br>
+                            <a href="https://linktr.ee/itini" target="_blank">Linktree</a>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.99 5V1h-1v4H8.99V1h-1v4H5.99V1h-1v4H2v2h20V5h-3V1h-1v4h-2.01V1h-1v4h-2zm8.9 6H2v12h17.99V11zm-5 6h-5v5h5v-5z"/>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Horarios</h4>
+                            <p>Lunes a Viernes: 11:30 - 20:00<br>Sábados: 12:00 - 21:00<br>Domingos: 12:00 - 20:00</p>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11 9H9V7h2m0 8H9v-2h2m4-8h-2V7h2m0 8h-2v-2h2m4-8h-2V7h2m0 8h-2v-2h2M7 9H5V7h2m0 8H5v-2h2z"/>
+                            </svg>
+                        </div>
+                        <div class="info-content">
+                            <h4>Servicios</h4>
+                            <p>Consumo en el lugar · Para llevar · Entrega a domicilio</p>
+                        </div>
+                    </div>
+
+                    <div class="discount-box">
+                        <p>10% DESCUENTO</p>
+                        <p>Abonando en efectivo</p>
+                    </div>
+
+                    <div class="location-buttons">
+                        <button class="btn btn-primary btn-lg" onclick="window.open('https://maps.app.goo.gl/H3xYMwYnzr7pV7RG9', '_blank')">Ver en Mapas</button>
+                        <button class="btn btn-outline btn-lg" onclick="window.open('https://www.instagram.com/itini.ba', '_blank')">Instagram</button>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.8487532849877!2d-58.37815!3d-34.6032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb74c7e5504d%3A0x955e105e36f8a58!2sITINI%20%7C%20Ramen%20Japon%C3%A9s%2C%20Specialty%20Coffee%20%26%20Matcha!5e0!3m2!1ses!2sar!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Listo para una experiencia única?</h2>
+            <p>Síguenos en Instagram para ver nuestras últimas creaciones y promociones especiales</p>
+            <div class="cta-buttons">
+                <button class="btn btn-cta-primary btn-lg transition-smooth" onclick="window.open('https://www.instagram.com/itini.ba', '_blank')">
+                    <i class="fab fa-instagram"></i> Síguenos en Instagram
+                </button>
+                <button class="btn btn-cta-outline btn-lg transition-smooth" onclick="window.open('https://linktr.ee/itini', '_blank')">
+                    <i class="fas fa-link"></i> Nuestro Linktree
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">&copy; 2026 ITINI. Todos los derechos reservados.</p>
+                <div class="footer-links">
+                    <a href="https://www.instagram.com/itini.ba" target="_blank">Instagram</a>
+                    <a href="https://linktr.ee/itini" target="_blank">Linktree</a>
+                    <a href="#">Privacidad</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/itini.ba" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Full Menu Modal -->
+    <div id="fullMenuModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Menú Completo ITINI</h2>
+                <button class="close-modal" onclick="closeFullMenu()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Ramen & Platos Principales -->
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Ramen & Platos Principales</h3>
+                    <div class="menu-category-items">
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Cold Sesame Ramen</div>
+                            <div class="full-menu-item-description">Fideos fríos, base de sésamo, salsa de soja, huevo, pepino, zanahoria</div>
+                            <div class="full-menu-item-price">$19.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Curry Ramen</div>
+                            <div class="full-menu-item-description">Caldo chintan, tare curry, hongos, zanahoria, papa, tofu, vegetales</div>
+                            <div class="full-menu-item-price">$27.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Miso Ramen</div>
+                            <div class="full-menu-item-description">Caldo chintan, tare miso, hongos, tofu (fresco y frito), choclo, vegetales</div>
+                            <div class="full-menu-item-price">$24.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Shoyu Ramen</div>
+                            <div class="full-menu-item-description">Caldo chintan, tare shoyu, hongos, tofu, brotes de soja, vegetales</div>
+                            <div class="full-menu-item-price">$24.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Spicy Miso Ramen</div>
+                            <div class="full-menu-item-description">Caldo chintan, tare shoyu, hongos, tofu, salsa de ají casera, vegetales</div>
+                            <div class="full-menu-item-price">$24.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Spicy Ramen</div>
+                            <div class="full-menu-item-description">Caldo chintan, tare shoyu, hongos, tofu, salsa de ají casera, vegetales</div>
+                            <div class="full-menu-item-price">$24.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Tantan Ramen</div>
+                            <div class="full-menu-item-description">Caldo chintan, tare de sésamo orgánico, hongos, soja texturizada, brotes, vegetales</div>
+                            <div class="full-menu-item-price">$24.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Tantanmen (Mazesoba)</div>
+                            <div class="full-menu-item-description">Fideos (sin caldo), base cremosa sésamo, soja texturizada, ají Sichuan, hongos, vegetales</div>
+                            <div class="full-menu-item-price">$20.000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donburi -->
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Donburi - Bowls de Arroz</h3>
+                    <div class="menu-category-items">
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Katsu Curry Don</div>
+                            <div class="full-menu-item-description">Arroz yamaní orgánico, salsa de curry, milanesa de berenjena</div>
+                            <div class="full-menu-item-price">$22.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Yasai Omuretsu Don</div>
+                            <div class="full-menu-item-description">Arroz yamaní orgánico, omelette, hongo, vegetales, salsa agridulce</div>
+                            <div class="full-menu-item-price">$22.000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wok -->
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Wok - Yaki-mono</h3>
+                    <div class="menu-category-items">
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Yakimeshi</div>
+                            <div class="full-menu-item-description">Arroz integral yamaní, huevo, hongo, vegetales, sésamo, salsa de soja</div>
+                            <div class="full-menu-item-price">$21.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Yakisoba</div>
+                            <div class="full-menu-item-description">Fideos con tofu, hongo, vegetales, salsa teriyaki casera</div>
+                            <div class="full-menu-item-price">$21.000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entradas -->
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Entradas</h3>
+                    <div class="menu-category-items">
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Bao a la Plancha</div>
+                            <div class="full-menu-item-description">Panes al vapor y dorados a la plancha</div>
+                            <div class="full-menu-item-price">$7.500</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Croqueta de Papa con Queso</div>
+                            <div class="full-menu-item-description">Con centro de queso fundido (4u)</div>
+                            <div class="full-menu-item-price">$7.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Hane Gyoza</div>
+                            <div class="full-menu-item-description">Gyoza a la plancha, crocantes (8u)</div>
+                            <div class="full-menu-item-price">$16.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Harumaki</div>
+                            <div class="full-menu-item-description">Arrolladitos primavera (3u)</div>
+                            <div class="full-menu-item-price">$8.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Humita</div>
+                            <div class="full-menu-item-description">Tamales de choclo dulce (2u)</div>
+                            <div class="full-menu-item-price">$8.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Papas Fritas Rústicas</div>
+                            <div class="full-menu-item-description">Papas cuña crocantes</div>
+                            <div class="full-menu-item-price">$6.500</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Sui Gyoza</div>
+                            <div class="full-menu-item-description">Gyoza hervidas, estilo tradicional (10u)</div>
+                            <div class="full-menu-item-price">$16.000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cafetería -->
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Cafetería & Dulces</h3>
+                    <div class="menu-category-items">
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Avellana Latte</div>
+                            <div class="full-menu-item-description">Café con leche saborizado</div>
+                            <div class="full-menu-item-price">$6.800</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Cappuccino</div>
+                            <div class="full-menu-item-description">Espresso con leche espumada</div>
+                            <div class="full-menu-item-price">$5.900 (Doble $6.000)</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Caramel Latte</div>
+                            <div class="full-menu-item-description">Café con leche y caramelo</div>
+                            <div class="full-menu-item-price">$6.800</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Espresso</div>
+                            <div class="full-menu-item-description">Café solo</div>
+                            <div class="full-menu-item-price">$4.200 (Doppio $4.700)</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Flat White</div>
+                            <div class="full-menu-item-description">Doble shot de espresso y leche</div>
+                            <div class="full-menu-item-price">$6.400</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Latte</div>
+                            <div class="full-menu-item-description">Café con leche</div>
+                            <div class="full-menu-item-price">$6.200</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Moccacino</div>
+                            <div class="full-menu-item-description">Café, leche y chocolate</div>
+                            <div class="full-menu-item-price">$6.500 (Doble $7.000)</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Submarino / Chocolatada</div>
+                            <div class="full-menu-item-description">Leche con chocolate</div>
+                            <div class="full-menu-item-price">$6.000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bebidas Frías -->
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Bebidas Frías & Bubble Tea</h3>
+                    <div class="menu-category-items">
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Açaí Tropical</div>
+                            <div class="full-menu-item-description">Bowl de açaí, frutas y granola</div>
+                            <div class="full-menu-item-price">$16.500</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Bubble Tea (Classic/Jasmine)</div>
+                            <div class="full-menu-item-description">Té con esferas de tapioca</div>
+                            <div class="full-menu-item-price">$6.800</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Iced Latte / Flat White</div>
+                            <div class="full-menu-item-description">Café frío</div>
+                            <div class="full-menu-item-price">$6.300</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Smoothies</div>
+                            <div class="full-menu-item-description">Frutilla, Mango Maracuyá, Frutos del Bosque</div>
+                            <div class="full-menu-item-price">$7.000</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Yogurt & Granola</div>
+                            <div class="full-menu-item-description">Yogurt, frutas, granola y miel</div>
+                            <div class="full-menu-item-price">$14.500</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panadería -->
+                <div class="menu-category">
+                    <h3 class="menu-category-title">Panadería & Sandwiches</h3>
+                    <div class="menu-category-items">
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Alfacookies</div>
+                            <div class="full-menu-item-description">Galleta rellena tipo alfajor</div>
+                            <div class="full-menu-item-price">$6.900</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Carrot Cake</div>
+                            <div class="full-menu-item-description">Torta de zanahoria</div>
+                            <div class="full-menu-item-price">$6.800</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Cinnamon Roll</div>
+                            <div class="full-menu-item-description">Rol de canela</div>
+                            <div class="full-menu-item-price">$6.300</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Huevos Revueltos</div>
+                            <div class="full-menu-item-description">Pan shokupan, huevos, palta, cherry, queso crema</div>
+                            <div class="full-menu-item-price">$15.500</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Tamago Sando</div>
+                            <div class="full-menu-item-description">Sándwich de pan japonés, huevo, mayonesa, cilantro</div>
+                            <div class="full-menu-item-price">$12.500</div>
+                        </div>
+                        <div class="full-menu-item">
+                            <div class="full-menu-item-name">Tofu Avocado Toast</div>
+                            <div class="full-menu-item-description">Pan shokupan, tofu, palta ahumada, cherry, semillas</div>
+                            <div class="full-menu-item-price">$17.500</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Notes -->
+                <div class="menu-notes">
+                    <h4>Información Importante</h4>
+                    <p><strong>10% de descuento</strong> abonando en efectivo</p>
+                    <p><strong>Opciones veganas y sin TACC</strong> disponibles. Consulta con nuestro personal.</p>
+                    <p><strong>Síguenos:</strong> @itini.ba en Instagram</p>
+                    <p><strong>Ubicación:</strong> Esmeralda 436, San Nicolás, Buenos Aires</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Full Menu Modal Functions
+        function openFullMenu() {
+            document.getElementById('fullMenuModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeFullMenu() {
+            document.getElementById('fullMenuModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('fullMenuModal');
+            if (event.target == modal) {
+                closeFullMenu();
+            }
+        });
+
+        // Keyboard shortcut to close modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeFullMenu();
+            }
+        });
+    </script>
+</body>
+</html>
